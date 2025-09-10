@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript String Manipulation Demo</title>
+    <!-- Google Fonts for a nicer look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Inconsolata&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f1f5f9;
+            color: #334155;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        .container {
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+        h1 {
+            font-size: 1.875rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 1.5rem;
+        }
+        #output {
+            font-family: 'Inconsolata', monospace;
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            line-height: 1.6;
+            color: #475569;
+            white-space: pre-wrap;
+        }
+        strong {
+            color: #0f172a;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>String Manipulation Demo Output</h1>
+        <div id="output"></div>
+    </div>
+
+    <script>
+        const outputDiv = document.getElementById('output');
+        function print(message) {
+            outputDiv.innerHTML += message + '\n';
+        }
+
+        const originalString = "  JavaScript is Fun!  ";
+
+        print(`<strong>Original String:</strong> "${originalString}"`);
+        print(`<strong>Length:</strong> ${originalString.length}`);
+        print("");
+
+        // --- Method Demonstrations ---
+        print("<strong>--- Methods ---</strong>");
+        
+        // trim()
+        const trimmedString = originalString.trim();
+        print(`After trim(): "${trimmedString}"`);
+
+        // toUpperCase()
+        const upperCaseString = trimmedString.toUpperCase();
+        print(`After toUpperCase(): "${upperCaseString}"`);
+
+        // replace()
+        const replacedString = trimmedString.replace("Fun", "Awesome");
+        print(`After replace("Fun", "Awesome"): "${replacedString}"`);
+
+        // slice()
+        const slicedString = trimmedString.slice(0, 10); // Extracts "JavaScript"
+        print(`After slice(0, 10): "${slicedString}"`);
+
+        // includes()
+        const hasScript = trimmedString.includes("Script");
+        print(`Includes "Script"?: ${hasScript}`);
+        print("");
+
+        // --- Chaining Methods ---
+        print("<strong>--- Chaining Methods ---</strong>");
+        const chainedResult = originalString.trim().toLowerCase().replace("fun", "powerful");
+        print(`Result of chaining: "${chainedResult}"`);
+        print("");
+        
+        // --- Template Literals ---
+        print("<strong>--- Building Strings with Template Literals ---</strong>");
+        const language = "JavaScript";
+        const feeling = "versatile";
+        const finalSentence = `Learning ${language} is great because it is so ${feeling}!`;
+        print(finalSentence);
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript JSON Demo</title>
+    <!-- Google Fonts for a nicer look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Inconsolata&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f1f5f9;
+            color: #334155;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        .container {
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+        h1 {
+            font-size: 1.875rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+        .subtitle {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-family: 'Inconsolata', monospace;
+            background-color: #e2e8f0;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            display: inline-block;
+        }
+        #output {
+            font-family: 'Inconsolata', monospace;
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            line-height: 1.6;
+            color: #475569;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+        strong {
+            color: #0f172a;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 style="text-align: center;">JSON Demo</h1>
+        <div style="text-align: center;">
+            <p class="subtitle">Press F12 to open the developer console!</p>
+        </div>
+        <div id="output"></div>
+    </div>
+
+    <script>
+        const outputDiv = document.getElementById('output');
+        function print(message) {
+            outputDiv.innerHTML += message + '\n';
+        }
+
+        // --- 1. The Starting JavaScript Object ---
+        const user = {
+            id: 123,
+            name: "Alice",
+            isAdmin: true,
+            courses: ["HTML", "CSS", "JS"],
+            metadata: null,
+            // These properties are NOT valid in JSON
+            lastLogin: undefined,
+            logout: function() { console.log("Logging out..."); }
+        };
+
+        // --- CONSOLE LOG ---
+        console.group("JavaScript Object to JSON String");
+        console.log("Original JavaScript Object:", user);
+
+
+        // --- 2. JSON.stringify() ---
+        print("<strong>--- 1. JS Object → JSON String ---</strong>");
+        const jsonString = JSON.stringify(user, null, 2); // The 2 adds nice indentation
+        print(jsonString);
+        print(`\nType of result: ${typeof jsonString}`);
+        print("Notice the 'lastLogin' and 'logout' properties were removed.");
+        print("");
+
+        // --- CONSOLE LOG ---
+        console.log("Result of JSON.stringify():", jsonString);
+        console.log("Notice the type is a string:", typeof jsonString);
+        console.groupEnd();
+
+
+        // --- 3. JSON.parse() ---
+        print("<strong>--- 2. JSON String → JS Object ---</strong>");
+        const receivedJsonString = '{"id":456,"name":"Bob","roles":["viewer","editor"]}';
+
+        try {
+            const parsedObject = JSON.parse(receivedJsonString);
+            print("Successfully parsed the string into an object.");
+            print(`Accessing a property: parsedObject.name is "${parsedObject.name}"`);
+            
+            // --- CONSOLE LOG ---
+            console.group("JSON String to JavaScript Object");
+            console.log("Received JSON String:", receivedJsonString);
+            console.log("Parsed JavaScript Object:", parsedObject);
+            console.groupEnd();
+
+        } catch (error) {
+            print(`An error occurred: ${error.message}`);
+        }
+        print("");
+
+
+        // --- 4. Handling a JSON.parse() Error ---
+        print("<strong>--- 3. Handling a Parse Error ---</strong>");
+        const invalidJsonString = '{ "name": "Charlie", "age": 30, }'; // Invalid trailing comma
+        
+        try {
+            JSON.parse(invalidJsonString);
+        } catch (error) {
+            print(`Caught an error as expected: ${error.message}`);
+            
+            // --- CONSOLE LOG ---
+            console.group("Error Handling");
+            console.log("Invalid JSON string with trailing comma:", invalidJsonString);
+            console.error("The error caught by try...catch:", error);
+            console.groupEnd();
+        }
+
+    </script>
+
+</body>
+</html>

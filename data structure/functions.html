@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Functions Demo</title>
+    <!-- Google Fonts for a nicer look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Inconsolata&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f1f5f9;
+            color: #334155;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        .container {
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+        h1 {
+            font-size: 1.875rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+        .subtitle {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-family: 'Inconsolata', monospace;
+            background-color: #e2e8f0;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            display: inline-block;
+        }
+        #output {
+            font-family: 'Inconsolata', monospace;
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            line-height: 1.6;
+            color: #475569;
+            white-space: pre-wrap;
+        }
+        strong {
+            color: #0f172a;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 style="text-align: center;">Functions Demo</h1>
+        <div style="text-align: center;">
+            <p class="subtitle">Press F12 to open the developer console!</p>
+        </div>
+        <div id="output"></div>
+    </div>
+
+    <script>
+        const outputDiv = document.getElementById('output');
+        function print(message) {
+            outputDiv.innerHTML += message + '\n';
+        }
+
+        // --- 1. Function Declaration ---
+        // 'name' is a parameter. 'Guest' is its default value.
+        function greetUser(name = "Guest") {
+            const message = `Welcome, ${name}!`;
+            // --- CONSOLE LOG ---
+            console.log("Running the 'greetUser' function declaration.");
+            return message;
+        }
+
+        // --- 2. Function Expression ---
+        const calculateArea = function(width, height) {
+            // --- CONSOLE LOG ---
+            console.log(`Calculating area for ${width}x${height}`);
+            return width * height;
+        };
+        
+        // --- 3. Arrow Function ---
+        // A concise syntax for creating functions.
+        // For single-line functions, the 'return' is implicit.
+        const add = (a, b) => a + b;
+
+
+        // --- Calling the Functions ---
+        print("<strong>--- Calling Functions ---</strong>");
+
+        // Calling the declaration
+        const greeting1 = greetUser("Alice");
+        print(greeting1);
+        
+        // Calling with the default parameter
+        const greeting2 = greetUser();
+        print(greeting2);
+        print("");
+
+        // Calling the expression and using its return value
+        const area = calculateArea(10, 5);
+        print(`The calculated area is: ${area}`);
+        print("");
+        
+        // Calling the arrow function
+        const sum = add(5, 7);
+        print(`The sum from the arrow function is: ${sum}`);
+
+        // --- CONSOLE LOG ---
+        console.log("--- Return Values ---");
+        console.log("Return value from greetUser('Alice'):", greeting1);
+        console.log("Return value from calculateArea(10, 5):", area);
+        console.log("Return value from add(5, 7):", sum);
+    </script>
+
+</body>
+</html>

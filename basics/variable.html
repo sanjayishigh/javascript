@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Variables Demo</title>
+    <!-- Google Fonts for a nicer look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Inconsolata&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f1f5f9;
+            color: #334155;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        .container {
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+        h1 {
+            font-size: 1.875rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 1.5rem;
+        }
+        #output {
+            font-family: 'Inconsolata', monospace;
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            line-height: 1.6;
+            color: #475569;
+            white-space: pre-wrap; /* Ensures lines break correctly */
+        }
+        strong {
+            color: #0f172a;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Variables Demo Output</h1>
+        <!-- JavaScript will write its output here -->
+        <div id="output"></div>
+    </div>
+
+    <script>
+        // Get a reference to the output div so we can write to it
+        const outputDiv = document.getElementById('output');
+
+        // A helper function to make printing to the page easier
+        function print(message) {
+            outputDiv.innerHTML += message + '\n';
+        }
+
+        // --- 1. Using 'let' (Value can be changed) ---
+        print("<strong>--- Demonstrating 'let' ---</strong>");
+        let userLevel = 5;
+        print(`Initial userLevel: ${userLevel}`);
+
+        userLevel = 6; // Reassigning the value is allowed with 'let'
+        print(`Updated userLevel: ${userLevel}`);
+        print(""); // Add a blank line for spacing
+
+
+        // --- 2. Using 'const' (Value cannot be reassigned) ---
+        print("<strong>--- Demonstrating 'const' ---</strong>");
+        const accountId = "USR_12345";
+        print(`Account ID: ${accountId}`);
+
+        // The line below would cause an error if uncommented.
+        // accountId = "USR_67890"; // TypeError: Assignment to constant variable.
+        print("Attempting to reassign 'accountId' would cause an error.");
+        print("");
+
+
+        // --- 3. Mutability with 'const' objects ---
+        print("<strong>--- Mutability with 'const' objects ---</strong>");
+        const userSettings = {
+            theme: "dark",
+            notifications: true
+        };
+        print(`Initial theme: ${userSettings.theme}`);
+
+        // We can't reassign userSettings, but we CAN change its properties.
+        userSettings.theme = "light";
+        print(`Updated theme: ${userSettings.theme}`);
+        
+    </script>
+
+</body>
+</html>

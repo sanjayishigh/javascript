@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Nested Arrays Demo</title>
+    <!-- Google Fonts for a nicer look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Inconsolata&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f1f5f9;
+            color: #334155;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        .container {
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+        h1 {
+            font-size: 1.875rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+        .subtitle {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-family: 'Inconsolata', monospace;
+            background-color: #e2e8f0;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            display: inline-block;
+        }
+        #output {
+            font-family: 'Inconsolata', monospace;
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            line-height: 1.6;
+            color: #475569;
+            white-space: pre-wrap;
+        }
+        strong {
+            color: #0f172a;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 style="text-align: center;">Nested Arrays Demo</h1>
+        <div style="text-align: center;">
+            <p class="subtitle">Press F12 to open the developer console!</p>
+        </div>
+        <div id="output"></div>
+    </div>
+
+    <script>
+        const outputDiv = document.getElementById('output');
+        function print(message) {
+            outputDiv.innerHTML += message + '\n';
+        }
+
+        // --- 1. A Nested Array (Tic-Tac-Toe Board) ---
+        const ticTacToeBoard = [
+            ['X', 'O', 'X'], // Row 0
+            ['O', 'X', 'O'], // Row 1
+            ['X', 'O', 'O']  // Row 2
+        ];
+        
+        // --- CONSOLE LOG ---
+        console.log("--- The Nested Array ---");
+        console.log("This is how a nested array looks in the console:");
+        console.table(ticTacToeBoard); // .table() is perfect for nested arrays
+
+        
+        // --- 2. Accessing Nested Elements ---
+        print("<strong>--- Accessing Nested Elements ---</strong>");
+        print(`The entire board is an array of ${ticTacToeBoard.length} rows.`);
+        
+        const centerSquare = ticTacToeBoard[1][1]; // Row 1, Column 1
+        print(`The center square (board[1][1]) is: "${centerSquare}"`);
+
+        const topRightSquare = ticTacToeBoard[0][2]; // Row 0, Column 2
+        print(`The top-right square (board[0][2]) is: "${topRightSquare}"`);
+        print("");
+
+
+        // --- 3. Modifying a Nested Element ---
+        print("<strong>--- Modifying a Nested Element ---</strong>");
+        print(`Original value at board[2][2] was: "${ticTacToeBoard[2][2]}"`);
+        ticTacToeBoard[2][2] = 'X'; // Change the bottom-right square
+        print(`New value at board[2][2] is now: "${ticTacToeBoard[2][2]}"`);
+        print("");
+
+
+        // --- 4. Looping Through a Nested Array ---
+        print("<strong>--- Looping with Nested 'for' Loops ---</strong>");
+        // The outer loop iterates through the rows
+        for (let i = 0; i < ticTacToeBoard.length; i++) {
+            let rowString = "";
+            // The inner loop iterates through the "columns" of the current row
+            for (let j = 0; j < ticTacToeBoard[i].length; j++) {
+                rowString += ticTacToeBoard[i][j] + " | ";
+            }
+            print(rowString.slice(0, -2)); // Use slice to remove the last " |"
+        }
+        
+    </script>
+
+</body>
+</html>

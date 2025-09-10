@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Control Flow Demo</title>
+    <!-- Google Fonts for a nicer look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Inconsolata&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f1f5f9;
+            color: #334155;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        .container {
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+        h1 {
+            font-size: 1.875rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 1.5rem;
+        }
+        #output {
+            font-family: 'Inconsolata', monospace;
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            line-height: 1.6;
+            color: #475569;
+            white-space: pre-wrap;
+        }
+        strong {
+            color: #0f172a;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Control Flow Demo Output</h1>
+        <div id="output"></div>
+    </div>
+
+    <script>
+        const outputDiv = document.getElementById('output');
+        function print(message) {
+            outputDiv.innerHTML += message + '\n';
+        }
+
+        // --- 1. 'if...else if...else' Chain ---
+        print("<strong>--- if...else if...else ---</strong>");
+        const score = 85;
+        let grade;
+
+        if (score >= 90) {
+            grade = 'A';
+        } else if (score >= 80) {
+            grade = 'B'; // This block runs because score (85) is >= 80
+        } else if (score >= 70) {
+            grade = 'C';
+        } else {
+            grade = 'F';
+        }
+        print(`A score of ${score} gets a grade of: ${grade}`);
+        print("");
+
+
+        // --- 2. 'switch' Statement ---
+        print("<strong>--- switch Statement ---</strong>");
+        const day = "Wednesday";
+        let activity;
+
+        switch (day) {
+            case "Monday":
+                activity = "Start the week!";
+                break; // 'break' prevents fall-through
+            case "Wednesday":
+                activity = "Midweek meeting."; // This case matches
+                break;
+            case "Friday":
+                activity = "Time to relax!";
+                break;
+            default: // Runs if no other case matches
+                activity = "Just a regular day.";
+        }
+        print(`On ${day}, the activity is: ${activity}`);
+        print("");
+
+
+        // --- 3. Ternary Operator ---
+        print("<strong>--- Ternary Operator ---</strong>");
+        const userIsLoggedIn = true;
+        const welcomeMessage = userIsLoggedIn ? "Welcome back!" : "Please log in.";
+        print(welcomeMessage);
+        print("");
+        
+        // --- 4. Simple 'if' ---
+        print("<strong>--- Simple 'if' Statement ---</strong>");
+        const temperature = 35;
+        if (temperature > 30) {
+            print("It's a hot day! Stay hydrated."); // This runs
+        }
+
+    </script>
+
+</body>
+</html>

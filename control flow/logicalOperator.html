@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Logical Operators Demo</title>
+    <!-- Google Fonts for a nicer look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Inconsolata&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f1f5f9;
+            color: #334155;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        .container {
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+        h1 {
+            font-size: 1.875rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 1.5rem;
+        }
+        #output {
+            font-family: 'Inconsolata', monospace;
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            line-height: 1.6;
+            color: #475569;
+            white-space: pre-wrap;
+        }
+        strong {
+            color: #0f172a;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Logical Operators Demo Output</h1>
+        <div id="output"></div>
+    </div>
+
+    <script>
+        const outputDiv = document.getElementById('output');
+        function print(message) {
+            outputDiv.innerHTML += message + '\n';
+        }
+
+        // --- 1. Logical AND (&&) ---
+        // Both conditions must be true.
+        print("<strong>--- Logical AND (&&) ---</strong>");
+        const age = 25;
+        const hasLicense = true;
+        if (age >= 18 && hasLicense) {
+            print("Can drive: YES (age is >= 18 AND hasLicense is true)");
+        } else {
+            print("Can drive: NO");
+        }
+        print("");
+
+
+        // --- 2. Logical OR (||) ---
+        // At least one condition must be true.
+        print("<strong>--- Logical OR (||) ---</strong>");
+        const isManager = false;
+        const isSupervisor = true;
+        if (isManager || isSupervisor) {
+            print("Has clearance: YES (isManager is false BUT isSupervisor is true)");
+        } else {
+            print("Has clearance: NO");
+        }
+        print("");
+
+
+        // --- 3. Logical NOT (!) ---
+        // Inverts the boolean value.
+        print("<strong>--- Logical NOT (!) ---</strong>");
+        const isPaused = false;
+        if (!isPaused) {
+            print("Game is running (because !isPaused is true)");
+        } else {
+            print("Game is paused");
+        }
+        print("");
+        
+        // --- 4. Combining Operators & Short-circuiting ---
+        print("<strong>--- Combining & Short-Circuiting ---</strong>");
+        const userRole = "guest";
+        const hasPremium = true;
+
+        // Parentheses make the logic clear
+        if ((userRole === "admin") || (userRole === "editor" && hasPremium)) {
+             print("User has special permissions.");
+        } else {
+             print("User has standard permissions."); // This will run
+        }
+
+        const username = "";
+        const displayName = username || "Anonymous"; // Short-circuiting for default values
+        print(`The user's display name is: "${displayName}"`);
+        
+    </script>
+
+</body>
+</html>
