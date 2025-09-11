@@ -1,11 +1,5 @@
-function name(fn){
-    const value = 10 ;
-    fn(value);
+function bio(name){
+  console.log(name);
 }
 
-function fn(value){
-    console.log(value);
-    
-}
-
-name(fn);
+bio("Sanjay", "ETE", "RVCE");
