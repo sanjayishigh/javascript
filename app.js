@@ -1,5 +1,8 @@
-function bio(name){
-  console.log(name);
-}
+const foo = Symbol;
+console.log(typeof(foo));
 
-bio("Sanjay", "ETE", "RVCE");
+obj = {};
+
+obj[foo] = "Sanjay";
+
+console.log(obj);
