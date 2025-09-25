@@ -16,6 +16,8 @@
 // console.log(ul.children[2]);
 // console.log(ul.children[2].innerText);
 // ul.children[2].innerText = "Apple";
+// console.log(ul.children[2].innerText);
+
 // -----------------------------
 
 // Next Element Sibling
@@ -30,7 +32,7 @@
 // );
 
 // Previous Element Sibling
-let fourthLi = document.querySelector(".fourth");
-console.log(fourthLi);
-console.log(fourthLi.previousElementSibling.textContent);
-console.log(fourthLi.previousElementSibling.previousElementSibling.textContent);
+// let fourthLi = document.querySelector(".fourth");
+// console.log(fourthLi);
+// console.log(fourthLi.previousElementSibling.textContent);
+// console.log(fourthLi.previousElementSibling.previousElementSibling.textContent);

@@ -10,6 +10,6 @@ console.log(h1.classList);
 // console.log((h1.style.fontWeight = "normal"));
 
 // In EDITOR
-h1.classList.add("styles");
-h1.classList.remove("styles");
-h1.classList.toggle("styles");
+// h1.classList.add("styles");
+// h1.classList.remove("styles");
+// h1.classList.toggle("styles");

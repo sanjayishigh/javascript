@@ -19,3 +19,7 @@ const para = document.querySelector(".para");
 para.addEventListener("click", (e) => {
   console.log(e);
 });
+
+const para2 = document.querySelector(".para2");
+
+para2.addEventListener("click", () => para2.style.background = "teal" );
